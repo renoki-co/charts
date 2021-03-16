@@ -1,4 +1,4 @@
-name: Release laravel-helm
+name: Release Charts
 
 on:
   push:
@@ -8,6 +8,8 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+
+    name: Release Charts
 
     steps:
       - uses: actions/checkout@v2
