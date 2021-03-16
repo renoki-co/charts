@@ -29,6 +29,6 @@ jobs:
       - name: Release Chart
         uses: helm/chart-releaser-action@v1.2.0
         with:
-          charts_repo_url: https://helm.renoki.org/charts
+          config: chart-releaser.yaml
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
