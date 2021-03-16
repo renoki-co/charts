@@ -1,6 +1,6 @@
 apiVersion: v2
 name: laravel-helm
-description: Helm chart scaffolding for Laravel applications
+description: Helm chart scaffolding for Laravel applications.
 
 # A chart can be either an 'application' or a 'library' chart.
 #

@@ -1,10 +1,23 @@
-# Laravel Helm Chart
+Laravel Helm Chart
+==================
 
 Containerize & Orchestrate your Laravel application with this simple Helm chart.
 
-# Create Laravel image
+## 🤝 Supporting
+
+Renoki Co. on GitHub aims on bringing a lot of open source projects and helpful projects to the world. Developing and maintaining projects everyday is a harsh work and tho, we love it.
+
+If you are using your application in your day-to-day job, on presentation demos, hobby projects or even school projects, spread some kind words about our work or sponsor our work. Kind words will touch our chakras and vibe, while the sponsorships will keep the open source projects alive.
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R42U8CL)
+
+## 🚀 Installation
 
 To create a Laravel project image for Docker, head over to [renoki-co/laravel-helm-demo](https://github.com/renoki-co/laravel-helm-demo) to get started.
+
+## 🙌 Usage
+
+Some info.
 
 # Environment
 
@@ -18,7 +31,7 @@ apiVersion: v1
 metadata:
   name: laravel-helm-env
 data:
-  .env:
+  .env: |
     APP_NAME=Laravel
     APP_ENV=production
     APP_KEY=base64:kLHmdtqS0YnTACWSpkV4w1GVOQMEXQ68Usk8WR+yauA=
@@ -69,3 +82,20 @@ data:
     MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
     MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ```
+
+## 🐛 Testing
+
+Some info.
+
+## 🤝 Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+## 🔒  Security
+
+If you discover any security related issues, please email alex@renoki.org instead of using the issue tracker.
+
+## 🎉 Credits
+
+- [Alex Renoki](https://github.com/rennokki)
+- [All Contributors](../../contributors)
