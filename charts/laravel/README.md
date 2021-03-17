@@ -15,13 +15,18 @@ If you are using your application in your day-to-day job, on presentation demos,
 
 To create a Laravel project image for Docker, head over to [renoki-co/laravel-helm-demo](https://github.com/renoki-co/laravel-helm-demo) to get started.
 
+```bash
+$ helm repo add renoki-co https://helm.renoki-co.org
+$ helm repo update
+```
+
 ## 🙌 Usage
 
 Some info.
 
 # Environment
 
-Laravel needs an `.env` file to keep secrets within, so you will need a secret from which they will be pulled. To do this, simply create a `laravel-helm-env` secret with the `.env` key.
+Laravel needs an `.env` file to keep secrets within, so you will need a secret from which they will be pulled. To do this, simply create a `laravel-env` secret with the `.env` key.
 
 To replace the name, check for `app.envSecretName` in `values.yaml`.
 
@@ -29,7 +34,7 @@ To replace the name, check for `app.envSecretName` in `values.yaml`.
 kind: Secret
 apiVersion: v1
 metadata:
-  name: laravel-helm-env
+  name: laravel-env
 data:
   .env: |
     APP_NAME=Laravel
