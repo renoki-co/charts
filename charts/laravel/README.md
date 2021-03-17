@@ -15,10 +15,23 @@ If you are using your application in your day-to-day job, on presentation demos,
 
 To create a Laravel project image for Docker, head over to [renoki-co/laravel-helm-demo](https://github.com/renoki-co/laravel-helm-demo) to get started.
 
+Install Helm chart repository:
+
 ```bash
 $ helm repo add renoki-co https://helm.renoki-co.org
 $ helm repo update
 ```
+
+Install Laravel chart:
+
+```bash
+$ helm install laravel-app \
+    -f values.yaml \
+    --install \
+    renoki-co/laravel
+```
+
+Check `values.yaml` for the available changes
 
 ## 🙌 Usage
 
@@ -94,7 +107,7 @@ Some info.
 
 ## 🤝 Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](../../CONTRIBUTING.md) for details.
 
 ## 🔒  Security
 
@@ -103,4 +116,4 @@ If you discover any security related issues, please email alex@renoki.org instea
 ## 🎉 Credits
 
 - [Alex Renoki](https://github.com/rennokki)
-- [All Contributors](../../contributors)
+- [All Contributors](../../../../contributors)
