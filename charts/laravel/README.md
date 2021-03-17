@@ -39,16 +39,16 @@ Some info.
 
 # Environment
 
-Laravel needs an `.env` file to keep secrets within, so you will need a secret from which they will be pulled. To do this, simply create a `laravel-env` secret with the `.env` key.
+Laravel needs an `.env` file to keep secrets within, so you will need a secret from which they will be pulled. To do this, simply create a `laravel-app-env` secret with the `.env` key.
 
-To replace the name, check for `app.envSecretName` in `values.yaml`.
+To replace the name, check for `app.envSecretName` in `values.yaml`. By default, the name is `<release name>-env`.
 
 ```yaml
 kind: Secret
 apiVersion: v1
 metadata:
-  name: laravel-env
-data:
+  name: laravel-app-env
+stringData:
   .env: |
     APP_NAME=Laravel
     APP_ENV=production

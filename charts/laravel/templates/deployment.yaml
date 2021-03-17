@@ -25,7 +25,7 @@ spec:
           emptyDir: {}
         - name: env
           secret:
-            secretName: {{ if .Values.app.envSecretName }} {{ .Values.app.envSecretName }} {{- else -}} {{ .Release.Name }}-env" {{- end }}
+            secretName: {{ if .Values.app.envSecretName }} {{ .Values.app.envSecretName }} {{- else -}} {{ .Release.Name }}-env {{- end }}
         - name: nginx-config
           configMap:
             name: {{ if .Values.nginx.configName }} {{ .Values.nginx.configName }} {{- else -}} {{ .Release.Name }}-nginx-config {{- end }}
@@ -41,6 +41,7 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
 
       initContainers:
+      containers:
         - name: php-fpm
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
@@ -61,8 +62,10 @@ spec:
           lifecycle:
             postStart:
               exec:
-                command: ["/bin/sh", "-c", "cp -r /app/. /var/www/html && cp /tmp/.env /var/www/html && cd /var/www/html && sh deploy.sh"]
-      containers:
+                command:
+                  - /bin/sh
+                  - -c
+                  - cp -r /app/. /var/www/html && cp /tmp/.env /var/www/html && cd /var/www/html && sh deploy.sh && php-fpm
         - name: nginx
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
