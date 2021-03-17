@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  laravel-helm:
+  - apiVersion: v2
+    appVersion: 8.0.0
+    created: "2021-03-17T07:56:57.239272765Z"
+    description: Helm chart scaffolding for Laravel applications.
+    digest: 54187d27e57e491846a6a36121fd79095d1dce3e6fba878874538b93bdca562d
+    name: laravel-helm
+    type: application
+    urls:
+    - https://github.com/renoki-co/charts/releases/download/laravel-helm-0.1.1/laravel-helm-0.1.1.tgz
+    version: 0.1.1
+generated: "2021-03-17T07:56:57.239277865Z"
