@@ -33,10 +33,6 @@ $ helm upgrade laravel-app \
 
 Check `values.yaml` for additional available customizations.
 
-## 🙌 Usage
-
-Some info.
-
 # Environment
 
 Laravel needs an `.env` file to keep secrets within, so you will need a secret from which they will be pulled. To do this, simply create a `laravel-app-env` secret with the `.env` key.
@@ -103,7 +99,7 @@ stringData:
 
 ## 🐛 Testing
 
-Some info.
+Coming soon.
 
 ## 🤝 Contributing
 
