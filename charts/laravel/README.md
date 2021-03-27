@@ -25,7 +25,7 @@ $ helm repo update
 Install Laravel chart:
 
 ```bash
-$ helm install laravel-app \
+$ helm upgrade laravel-app \
     -f values.yaml \
     --install \
     renoki-co/laravel
