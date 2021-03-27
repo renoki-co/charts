@@ -31,7 +31,7 @@ $ helm upgrade laravel-app \
     renoki-co/laravel
 ```
 
-Check `values.yaml` for the available changes
+Check `values.yaml` for additional available customizations.
 
 ## 🙌 Usage
 
