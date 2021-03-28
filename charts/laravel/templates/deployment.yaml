@@ -30,7 +30,7 @@ spec:
           configMap:
             name: {{ if .Values.nginx.configName }} {{ .Values.nginx.configName }} {{- else -}} {{ .Release.Name }}-nginx-config {{- end }}
 
-      {{- with .Values.image.imagePullSecrets }}
+      {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
@@ -40,7 +40,6 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
 
-      initContainers:
       containers:
         - name: php-fpm
           securityContext:
@@ -58,7 +57,7 @@ spec:
               containerPort: 9000
               protocol: TCP
           resources:
-            {{- toYaml .Values.nginx.resources | nindent 12 }}
+            {{- toYaml .Values.app.resources | nindent 12 }}
           lifecycle:
             postStart:
               exec:

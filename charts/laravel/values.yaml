@@ -4,6 +4,10 @@
 
 replicaCount: 1
 
+nameOverride: ""
+fullnameOverride: ""
+imagePullSecrets: []
+
 # Values for Laravel app
 app:
   image:
@@ -11,8 +15,6 @@ app:
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     tag: "0.1.2"
-  nameOverride: ""
-  fullnameOverride: ""
 
   # Specify the Secret name to pull the .env file from.
   # If not specified, it defaults to "{release name}-env". It should
@@ -40,9 +42,6 @@ nginx:
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     tag: "1.19"
-
-  nameOverride: ""
-  fullnameOverride: ""
 
   resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -102,9 +101,6 @@ nginx:
         }
       }
     }
-
-image:
-  imagePullSecrets: []
 
 serviceAccount:
   # Specifies whether a service account should be created
