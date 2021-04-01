@@ -58,13 +58,17 @@ spec:
               protocol: TCP
           resources:
             {{- toYaml .Values.app.resources | nindent 12 }}
+          {{- with .Values.app.extraEnv }}
+          env:
+            {{ toYaml . | nindent 12 }}
+          {{- end }}
           lifecycle:
             postStart:
               exec:
                 command:
                   - /bin/sh
                   - -c
-                  - cp -r /app/. /var/www/html && cp /tmp/.env /var/www/html && cd /var/www/html && sh deploy.sh && php-fpm
+                  - cp -r /app/. /var/www/html && cp /tmp/.env /var/www/html/.env && cd /var/www/html && sh deploy.sh
         - name: nginx
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
@@ -80,14 +84,6 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /healthz
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /healthz
-              port: http
           resources:
             {{- toYaml .Values.nginx.resources | nindent 12 }}
 

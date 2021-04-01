@@ -14,7 +14,7 @@ app:
     repository: renokico/laravel-helm-demo
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "0.1.2"
+    tag: "0.1.5"
 
   # Specify the Secret name to pull the .env file from.
   # If not specified, it defaults to "{release name}-env". It should
@@ -34,6 +34,13 @@ app:
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
+
+  # Extra environment variables for the app container.
+  extraEnv: []
+  #  - name: POD_NAME
+  #    valueFrom:
+  #      fieldRef:
+  #        fieldPath: metadata.name
 
 # Values for NGINX reverse proxy
 nginx:
