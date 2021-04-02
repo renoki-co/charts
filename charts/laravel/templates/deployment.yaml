@@ -25,10 +25,19 @@ spec:
           emptyDir: {}
         - name: env
           secret:
-            secretName: {{ if .Values.app.envSecretName }} {{ .Values.app.envSecretName }} {{- else -}} {{ .Release.Name }}-env {{- end }}
+            secretName: {{ if .Values.app.envSecretName }} {{ .Values.app.envSecretName }} {{ else }} {{ .Release.Name }}-env {{ end }}
         - name: nginx-config
           configMap:
-            name: {{ if .Values.nginx.configName }} {{ .Values.nginx.configName }} {{- else -}} {{ .Release.Name }}-nginx-config {{- end }}
+            name: {{ if .Values.nginx.configName }} {{ .Values.nginx.configName }} {{ else }} {{ .Release.Name }}-nginx-config {{ end }}
+        - name: php-ini-config
+          configMap:
+            name: {{ if .Values.phpIni.configName }} {{ .Values.phpIni.configName }} {{ else }} {{ .Release.Name }}-php-ini-config {{ end }}
+        - name: php-fpm-config
+          configMap:
+            name: {{ if .Values.phpFpmConf.configName }} {{ .Values.phpFpmConf.configName }} {{ else }} {{ .Release.Name }}-php-fpm-config {{ end }}
+        {{- with .Values.extraVolumes }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
 
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -52,6 +61,15 @@ spec:
             - name: env
               mountPath: /tmp/.env
               subPath: .env
+            - name: php-ini-config
+              mountPath: /usr/local/etc/php/php.ini
+              subPath: php.ini
+            - name: php-fpm-config
+              mountPath: /usr/local/etc/php-fpm.d/laravel.conf
+              subPath: laravel.conf
+            {{- with .Values.app.extraVolumeMounts }}
+            {{ toYaml . | nindent 12 }}
+            {{- end }}
           ports:
             - name: php-fpm
               containerPort: 9000
@@ -60,7 +78,7 @@ spec:
             {{- toYaml .Values.app.resources | nindent 12 }}
           {{- with .Values.app.extraEnv }}
           env:
-            {{ toYaml . | nindent 12 }}
+            {{- toYaml . | nindent 12 }}
           {{- end }}
           lifecycle:
             postStart:
@@ -80,6 +98,9 @@ spec:
             - name: nginx-config
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
+            {{- with .Values.nginx.extraVolumeMounts }}
+            {{ toYaml . | nindent 12 }}
+            {{- end }}
           ports:
             - name: http
               containerPort: 80

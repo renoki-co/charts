@@ -14,7 +14,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/custom-http-errors: "404"
     {{- with .Values.ingress.annotations }}
-      {{- toYaml . | nindent 4 }}
+    {{- toYaml . | nindent 4 }}
     {{- end }}
 spec:
   {{- if .Values.ingress.tls }}

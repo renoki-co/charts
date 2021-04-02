@@ -1,0 +1,9 @@
+{{- if not .Values.phpFpmConf.configName }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-php-fpm-config
+data:
+  laravel.conf: |
+{{- tpl .Values.phpFpmConf.content . | nindent 4 }}
+{{- end }}

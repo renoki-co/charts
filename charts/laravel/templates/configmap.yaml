@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ if .Values.nginx.configName }} {{ .Values.nginx.configName }} {{- else -}} {{ .Release.Name }}-nginx-config {{- end }}
-data:
-  nginx.conf: |
-{{- tpl .Values.nginx.config . | nindent 4 }}
