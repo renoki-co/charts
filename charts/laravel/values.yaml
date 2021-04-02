@@ -179,6 +179,12 @@ extraVolumes: []
 #  - name: some-folder
 #    emptyDir: {}
 
+# Extra containers to run in the deployment.
+extraContainers: []
+
+# Extra init containers to run in the deployment.
+extraInitContainers: []
+
 phpFpmConf:
   # Specify the Config name to pull the laravel.conf configuration from.
   # If not specified, it defaults to "{release name}-php-fpm-config".
