@@ -8,7 +8,7 @@ nameOverride: ""
 fullnameOverride: ""
 imagePullSecrets: []
 
-# Values for Laravel app
+# Configure Laravel PHP-FPM container.
 app:
   image:
     repository: renokico/laravel-helm-demo
@@ -70,7 +70,9 @@ app:
     #   cpu: 40m
     #   memory: 32Mi
 
-# Values for NGINX reverse proxy
+# Configure the in-pod NGINX container. This container will
+# decode the fastcgi process from the PHP-FPM container
+# and will reverse proxy it to the external service.
 nginx:
   image:
     repository: nginx
