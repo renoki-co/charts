@@ -5,6 +5,7 @@
     - [Run workers (non-HTTP workload)](#run-workers-non-http-workload)
   - [Monitoring](#monitoring)
     - [Scraping PHP-FPM and NGINX Metrics](#scraping-php-fpm-and-nginx-metrics)
+    - [Healthchecks](#healthchecks)
   - [🐛 Testing](#-testing)
   - [🤝 Contributing](#-contributing)
   - [🔒  Security](#--security)
@@ -122,6 +123,12 @@ PHP-FPM and NGINX containers within the Laravel app pod can expose metrics for P
 
 - `localhost:9253/metrics` - PHP-FPM metrics
 - `localhost:9113/metrics` - NGINX metrics
+
+### Healthchecks
+
+Healthchecks are set up and enabled by default for both `/health` on the NGINX container (the web application that will serve the Laravel app) and the TCP :9000 port on PHP-FPM.
+
+For convenience, you may use [renoki-co/laravel-healthcheck](https://github.com/renoki-co/laravel-healthchecks) to easily set up healthchecks in your app, just like in `app/Http/Controllers/HealthController`.
 
 ## 🐛 Testing
 
