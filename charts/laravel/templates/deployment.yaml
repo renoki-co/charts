@@ -11,6 +11,7 @@ spec:
   selector:
     matchLabels:
       {{- include "laravel.selectorLabels" . | nindent 6 }}
+      laravel.com/pod-type: web
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -19,6 +20,7 @@ spec:
       {{- end }}
       labels:
         {{- include "laravel.selectorLabels" . | nindent 8 }}
+        laravel.com/pod-type: web
     spec:
       volumes:
         - name: app

@@ -1,0 +1,22 @@
+{{- range .Values.app.workers }}
+{{- if or (and .autoscaling.enabled (gt (.autoscaling.minReplicas | int) 1)) (gt (.replicaCount | int) 1) -}}
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  labels:
+    {{- include "laravel.labels" $ | nindent 4 }}
+  name: {{ include "laravel.fullname" $ }}-{{ .name }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "laravel.selectorLabels" $ | nindent 6 }}
+      laravel.com/pod-type: worker
+      laravel.com/worker-name: {{ .name | quote }}
+  {{- if .pdb.minAvailable }}
+  minAvailable: {{ .pdb.minAvailable }}
+  {{- end }}
+  {{- if .pdb.maxUnavailable }}
+  maxUnavailable: {{ .pdb.maxUnavailable }}
+  {{- end }}
+{{- end }}
+{{- end }}

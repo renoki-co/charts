@@ -1,11 +1,19 @@
+- [Laravel Helm Chart](#laravel-helm-chart)
+  - [🤝 Supporting](#-supporting)
+  - [🚀 Installation](#-installation)
+    - [Environment variables](#environment-variables)
+    - [Run workers (non-HTTP workload)](#run-workers-non-http-workload)
+  - [Monitoring](#monitoring)
+    - [Scraping PHP-FPM and NGINX Metrics](#scraping-php-fpm-and-nginx-metrics)
+  - [🐛 Testing](#-testing)
+  - [🤝 Contributing](#-contributing)
+  - [🔒  Security](#--security)
+  - [🎉 Credits](#-credits)
+
 Laravel Helm Chart
 ==================
 
 Containerize & Orchestrate your Laravel application with this simple Helm chart.
-
-Next milestones:
-
-- Laravel Worker mode (for non-HTTP workloads)
 
 ## 🤝 Supporting
 
@@ -30,14 +38,13 @@ Install Laravel chart:
 
 ```bash
 $ helm upgrade laravel-app \
-    -f values.yaml \
     --install \
     renoki-co/laravel
 ```
 
 Check `values.yaml` for additional available customizations.
 
-# Environment
+### Environment variables
 
 Laravel needs an `.env` file to keep secrets within, so you will need a secret from which they will be pulled. To do this, simply create a `laravel-app-env` secret with the `.env` key.
 
@@ -101,7 +108,15 @@ stringData:
     MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ```
 
-## Scraping PHP-FPM and NGINX Metrics
+### Run workers (non-HTTP workload)
+
+Workers can be for example long-lived commands, like `php artisan queue:work` commands or `php artisan horizon` that run in separate process than the web workers that serve HTTP content.
+
+In `values.yaml`, you will find a list where you can define all the workers. Each worker will be in its own Deployment and you can define the command to run on each one, as well as the pod settings.
+
+## Monitoring
+
+### Scraping PHP-FPM and NGINX Metrics
 
 PHP-FPM and NGINX containers within the Laravel app pod can expose metrics for Prometheus to scrape. When enabling the exporters, the following endpoints return Prometheus-readable metrics:
 

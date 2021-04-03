@@ -46,6 +46,72 @@ app:
   #  - name: some-folder
   #    mountPath: /some/path
 
+  # Run separate deployments (workers) that will long-live processes
+  # other than the PHP-FPM. Can be used for example to run queues or Laravel Horizon.
+  # Each worker will create a new deployment.
+  workers: []
+    # - name: horizon
+    #
+    #   # The command to run the process.
+    #   command: php artisan queue:work --memory=64
+    #
+    #   resources: {}
+    #   # We usually recommend not to specify default resources and to leave this as a conscious
+    #   # choice for the user. This also increases chances charts run on environments with little
+    #   # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    #   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    #   # limits:
+    #   #   cpu: 100m
+    #   #   memory: 128Mi
+    #   # requests:
+    #   #   cpu: 100m
+    #   #   memory: 128Mi
+    #
+    #   # Extra environment variables for the app container.
+    #   extraEnv: []
+    #
+    #   # Extra volumes to mount on the container.
+    #   extraVolumeMounts: []
+    #
+    #   # Extra containers to run in the worker deployment.
+    #   extraContainers: []
+    #
+    #   # Extra init containers to run in the worker deployment.
+    #   extraInitContainers: []
+    #
+    #   nodeSelector: {}
+    #
+    #   tolerations: []
+    #
+    #   affinity: {}
+    #
+    #   podAnnotations: {}
+    #
+    #   podSecurityContext: {}
+    #     # fsGroup: 2000
+    #
+    #   securityContext: {}
+    #     # capabilities:
+    #     #   drop:
+    #     #   - ALL
+    #     # readOnlyRootFilesystem: true
+    #     # runAsNonRoot: true
+    #     # runAsUser: 1000
+    #
+    #   replicaCount: 1
+    #
+    #   autoscaling:
+    #     enabled: false
+    #     minReplicas: 1
+    #     maxReplicas: 10
+    #     targetMemoryUtilizationPercentage: 80
+    #     # targetCPUUtilizationPercentage: 80
+    #
+    #   pdb:
+    #     enabled: false
+    #     minAvailable: 1
+    #     # maxUnavailable: 25%
+
   # For PHP-FPM, php-fpm_exporter is used. Enabling it will
   # attach automatically the container and will expose metrics on localhost:9253/metrics
   # for Prometheus to scrape.

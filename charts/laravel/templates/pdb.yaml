@@ -9,6 +9,7 @@ spec:
   selector:
     matchLabels:
       {{- include "laravel.selectorLabels" . | nindent 6 }}
+      laravel.com/pod-type: web
   {{- if .Values.pdb.minAvailable }}
   minAvailable: {{ .Values.pdb.minAvailable }}
   {{- end }}
