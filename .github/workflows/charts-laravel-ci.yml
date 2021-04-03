@@ -50,7 +50,7 @@ jobs:
       - name: Update hosts
         run: |
           MINIKUBE_IP=$(minikube ip)
-          echo "${MINIKUBE_IP} test.laravel.com" | tee -a /etc/hosts
+          echo "${MINIKUBE_IP} test.laravel.com" | sudo tee -a /etc/hosts
 
       - name: Connect to Laravel
         run: |
