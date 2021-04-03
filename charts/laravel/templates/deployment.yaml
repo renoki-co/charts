@@ -113,8 +113,87 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+            - name: http2
+              containerPort: 8080
+              protocol: TCP
           resources:
             {{- toYaml .Values.nginx.resources | nindent 12 }}
+        {{- if .Values.app.exporter.enabled }}
+        - name: php-fpm-metrics
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.app.exporter.image.repository }}:{{ .Values.app.exporter.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.app.exporter.image.pullPolicy }}
+          readinessProbe:
+            httpGet:
+              path: /metrics
+              port: php-fpm-metrics
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /metrics
+              port: php-fpm-metrics
+            periodSeconds: 5
+          startupProbe:
+            failureThreshold: 120
+            periodSeconds: 1
+            httpGet:
+              path: /metrics
+              port: php-fpm-metrics
+          env:
+            - name: PHP_FPM_SCRAPE_URI
+              value: tcp://127.0.0.1:9000/status
+            - name: PHP_FPM_WEB_LISTEN_ADDRESS
+              value: ":9253"
+            - name: PHP_FPM_WEB_TELEMETRY_PATH
+              value: /metrics
+            - name: PHP_FPM_FIX_PROCESS_COUNT
+              value: "true"
+            - name: PHP_FPM_LOG_LEVEL
+              value: info
+          ports:
+            - name: php-fpm-metrics
+              containerPort: 9253
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.app.exporter.resources | nindent 12 }}
+        {{- end }}
+        {{- if .Values.nginx.exporter.enabled }}
+        - name: nginx-metrics
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.nginx.exporter.image.repository }}:{{ .Values.nginx.exporter.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.nginx.exporter.image.pullPolicy }}
+          readinessProbe:
+            httpGet:
+              path: /metrics
+              port: nginx-metrics
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /metrics
+              port: nginx-metrics
+            periodSeconds: 5
+          startupProbe:
+            failureThreshold: 120
+            periodSeconds: 1
+            httpGet:
+              path: /metrics
+              port: nginx-metrics
+          env:
+            - name: SCRAPE_URI
+              value: http://127.0.0.1:8080/stub_status
+            - name: LISTEN_ADDRESS
+              value: ":9113"
+            - name: TELEMETRY_PATH
+              value: /metrics
+          ports:
+            - name: nginx-metrics
+              containerPort: 9113
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.nginx.exporter.resources | nindent 12 }}
+        {{- end }}
 
       {{- with .Values.nodeSelector }}
       nodeSelector:

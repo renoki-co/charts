@@ -3,6 +3,10 @@ Laravel Helm Chart
 
 Containerize & Orchestrate your Laravel application with this simple Helm chart.
 
+Next milestones:
+
+- Laravel Worker mode (for non-HTTP workloads)
+
 ## 🤝 Supporting
 
 Renoki Co. on GitHub aims on bringing a lot of open source projects and helpful projects to the world. Developing and maintaining projects everyday is a harsh work and tho, we love it.
@@ -96,6 +100,13 @@ stringData:
     MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
     MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ```
+
+## Scraping PHP-FPM and NGINX Metrics
+
+PHP-FPM and NGINX containers within the Laravel app pod can expose metrics for Prometheus to scrape. When enabling the exporters, the following endpoints return Prometheus-readable metrics:
+
+- `localhost:9253/metrics` - PHP-FPM metrics
+- `localhost:9113/metrics` - NGINX metrics
 
 ## 🐛 Testing
 
