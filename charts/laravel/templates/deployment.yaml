@@ -65,7 +65,7 @@ spec:
           imagePullPolicy: {{ .Values.app.image.pullPolicy }}
           volumeMounts:
             - name: app
-              mountPath: /var/www/html
+              mountPath: /app
             - name: env
               mountPath: /tmp/.env
               subPath: .env
@@ -94,7 +94,7 @@ spec:
                 command:
                   - /bin/sh
                   - -c
-                  - cp -r /app/. /var/www/html && cp /tmp/.env /var/www/html/.env && cd /var/www/html && sh deploy.sh
+                  - cp -r /var/www/html/. /app && cp /tmp/.env /var/www/html/.env && cd /var/www/html && sh deploy.sh
         - name: nginx
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
