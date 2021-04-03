@@ -278,7 +278,7 @@ phpFpmConf:
     ;             pm.process_idle_timeout   - The number of seconds after which
     ;                                         an idle process will be killed.
     ; Note: This value is mandatory.
-    pm = dynamic
+    pm = static
 
     ; The number of child processes to be created when pm is set to 'static' and the
     ; maximum number of child processes when pm is set to 'dynamic' or 'ondemand'.
@@ -294,17 +294,17 @@ phpFpmConf:
     ; The number of child processes created on startup.
     ; Note: Used only when pm is set to 'dynamic'
     ; Default Value: (min_spare_servers + max_spare_servers) / 2
-    pm.start_servers = 2
+    ;pm.start_servers = 2
 
     ; The desired minimum number of idle server processes.
     ; Note: Used only when pm is set to 'dynamic'
     ; Note: Mandatory when pm is set to 'dynamic'
-    pm.min_spare_servers = 1
+    ;pm.min_spare_servers = 1
 
     ; The desired maximum number of idle server processes.
     ; Note: Used only when pm is set to 'dynamic'
     ; Note: Mandatory when pm is set to 'dynamic'
-    pm.max_spare_servers = 3
+    ;pm.max_spare_servers = 3
 
     ; The number of seconds after which an idle process will be killed.
     ; Note: Used only when pm is set to 'ondemand'
