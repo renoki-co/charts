@@ -111,8 +111,18 @@ app:
     #     enabled: false
     #     minReplicas: 1
     #     maxReplicas: 10
-    #     targetMemoryUtilizationPercentage: 80
+    #     # targetMemoryUtilizationPercentage: 80
     #     # targetCPUUtilizationPercentage: 80
+    #
+    #     # Custom Metrics will be appended to the default CPU/Memory resources (if they're enabled).
+    #     customMetrics: []
+    #     # - type: Pods
+    #     #   pods:
+    #     #     metric:
+    #     #       name: phpfpm_process_utilization
+    #     #     target:
+    #     #       type: AverageValue
+    #     #       averageValue: "50"
     #
     #   pdb:
     #     enabled: false
@@ -306,8 +316,18 @@ autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 10
-  targetCPUUtilizationPercentage: 80
+  # targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
+
+  # Custom Metrics will be appended to the default CPU/Memory resources (if they're enabled).
+  customMetrics: []
+  # - type: Pods
+  #   pods:
+  #     metric:
+  #       name: phpfpm_process_utilization
+  #     target:
+  #       type: AverageValue
+  #       averageValue: "50"
 
 pdb:
   enabled: false
