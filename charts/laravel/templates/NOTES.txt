@@ -20,3 +20,21 @@
   echo "Visit http://127.0.0.1:8080 to use your application"
   kubectl --namespace {{ .Release.Namespace }} port-forward $POD_NAME 8080:$CONTAINER_PORT
 {{- end }}
+
+2. The following workers are running:
+{{- range .Values.app.workers }}
+  - {{ .name }} ({{ .command }})
+{{- end }}
+
+3. The current state of the exporters:
+{{- if .Values.app.exporter.enabled }}
+    The PHP-FPM exporter is enabled and exposes metrics for each pod at http://localhost:9253/metrics
+{{- else }}
+    The PHP-FPM exporter is disabled.
+{{- end }}
+
+{{- if .Values.nginx.exporter.enabled }}
+    The NGINX exporter is enabled and exposes metrics for each pod at http://localhost:9113/metrics
+{{- else }}
+    The NGINX exporter is disabled.
+{{- end }}
