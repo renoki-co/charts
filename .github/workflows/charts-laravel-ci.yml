@@ -19,7 +19,7 @@ jobs:
           - '1.19.9'
           - '1.20.5'
 
-    name: Test with Kubernetes v{{ matrix.kubernetes }}
+    name: Test with Kubernetes v${{ matrix.kubernetes }}
 
     steps:
       - uses: actions/checkout@v2
@@ -46,6 +46,8 @@ jobs:
       - name: Install Chart
         run: |
           helm upgrade --install -f tests/laravel-values.yaml laravel ./charts/laravel
+          sleep 15
+          kubectl get pods
 
       - name: Update hosts
         run: |
