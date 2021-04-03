@@ -50,7 +50,7 @@ app:
   # other than the PHP-FPM. Can be used for example to run queues or Laravel Horizon.
   # Each worker will create a new deployment.
   workers: []
-    # - name: horizon
+    # - name: queue-worker
     #
     #   # The command to run the process.
     #   command: php artisan queue:work --memory=64
