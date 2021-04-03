@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - charts/laravel/**
+      - .github/workflows/charts-laravel-ci.yml
 
 jobs:
   release:
