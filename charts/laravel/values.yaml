@@ -36,15 +36,15 @@ app:
 
   # Extra environment variables for the app container.
   extraEnv: []
-  #  - name: POD_NAME
-  #    valueFrom:
-  #      fieldRef:
-  #        fieldPath: metadata.name
+  # - name: POD_NAME
+  #   valueFrom:
+  #     fieldRef:
+  #       fieldPath: metadata.name
 
   # Extra volumes to mount on the container.
   extraVolumeMounts: []
-  #  - name: some-folder
-  #    mountPath: /some/path
+  # - name: some-folder
+  #   mountPath: /some/path
 
   # Configure the TCP healthcheck for the PHP-FPM process.
   # If enabled, Kubernetes will periodically check the PHP-FPM
@@ -166,8 +166,8 @@ nginx:
 
   # Extra volumes to mount on the container.
   extraVolumeMounts: []
-  #  - name: some-folder
-  #    mountPath: /some/path
+  # - name: some-folder
+  #   mountPath: /some/path
 
   # Configure the HTTP healthcheck for the Laravel app.
   # If enabled, ensure the given path in the Laravel app
@@ -298,9 +298,9 @@ ingress:
       paths:
         - /
   tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+  # - secretName: chart-example-tls
+  #   hosts:
+  #     - chart-example.local
 
 autoscaling:
   enabled: false
@@ -322,8 +322,8 @@ affinity: {}
 
 # Extra volumes to attach to the deployment.
 extraVolumes: []
-#  - name: some-folder
-#    emptyDir: {}
+# - name: some-folder
+#   emptyDir: {}
 
 # Extra containers to run in the deployment.
 extraContainers: []
