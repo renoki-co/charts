@@ -3,6 +3,16 @@ entries:
   laravel:
   - apiVersion: v2
     appVersion: 8.0.0
+    created: "2021-04-03T20:03:44.578252742Z"
+    description: Helm chart scaffolding for Laravel applications.
+    digest: cc17608e336a57bd1d9d23b641c925beabbb3612f6f26f1dadd14b80da254ab2
+    name: laravel
+    type: application
+    urls:
+    - https://github.com/renoki-co/charts/releases/download/laravel-0.4.1/laravel-0.4.1.tgz
+    version: 0.4.1
+  - apiVersion: v2
+    appVersion: 8.0.0
     created: "2021-04-03T18:38:07.906729683Z"
     description: Helm chart scaffolding for Laravel applications.
     digest: b899b33b83dc877f53f4c8ecdba3d93bff76a9cb48b81c01994b1cddffcf6db5
@@ -81,4 +91,4 @@ entries:
     urls:
     - https://github.com/renoki-co/charts/releases/download/laravel-0.1.0/laravel-0.1.0.tgz
     version: 0.1.0
-generated: "2021-04-03T18:38:07.906810082Z"
+generated: "2021-04-03T20:03:44.578298742Z"
