@@ -1,0 +1,57 @@
+name: charts/laravel
+
+on:
+  push:
+    paths:
+      - charts/laravel/**
+
+jobs:
+  release:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        kubernetes:
+          - '1.18.17'
+          - '1.19.9'
+          - '1.20.5'
+
+    name: Test with Kubernetes v{{ matrix.kubernetes }}
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: manusa/actions-setup-minikube@v2.3.0
+        name: Setup Minikube
+        with:
+          minikube version: v1.17.0
+          kubernetes version: "v${{ matrix.kubernetes }}"
+          github token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.4.0
+
+      - name: Install Chart
+        run: |
+          helm upgrade --install -f tests/laravel-values.yaml laravel ./charts/laravel
+
+      - name: Update hosts
+        run: |
+          MINIKUBE_IP=$(minikube ip)
+          echo "${MINIKUBE_IP} test.laravel.com" | tee -a /etc/hosts
+
+      - name: Connect to Laravel
+        run: |
+          until curl --silent -XGET --fail http://test.laravel.com; do printf '.'; sleep 1; done
+
