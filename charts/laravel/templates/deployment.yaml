@@ -84,6 +84,18 @@ spec:
             - name: php-fpm
               containerPort: 9000
               protocol: TCP
+          {{- if .Values.app.healthcheck.enabled }}
+          readinessProbe:
+            tcpSocket:
+              port: 9000
+            initialDelaySeconds: {{ .Values.app.healthcheck.period }}
+            periodSeconds: {{ .Values.app.healthcheck.period }}
+          livenessProbe:
+            tcpSocket:
+              port: 9000
+            initialDelaySeconds: {{ .Values.app.healthcheck.period }}
+            periodSeconds: {{ .Values.app.healthcheck.period }}
+          {{- end }}
           resources:
             {{- toYaml .Values.app.resources | nindent 12 }}
           {{- with .Values.app.extraEnv }}
@@ -118,6 +130,20 @@ spec:
             - name: http2
               containerPort: 8080
               protocol: TCP
+          {{- if .Values.nginx.healthcheck.enabled }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.nginx.healthcheck.path }}
+              port: http
+            initialDelaySeconds: {{ .Values.nginx.healthcheck.period }}
+            periodSeconds: {{ .Values.nginx.healthcheck.period }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.nginx.healthcheck.path }}
+              port: http
+            initialDelaySeconds: {{ .Values.nginx.healthcheck.period }}
+            periodSeconds: {{ .Values.nginx.healthcheck.period }}
+          {{- end }}
           resources:
             {{- toYaml .Values.nginx.resources | nindent 12 }}
         {{- if .Values.app.exporter.enabled }}
