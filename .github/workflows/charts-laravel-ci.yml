@@ -50,6 +50,7 @@ jobs:
 
       - name: Install Chart
         run: |
+          sleep 30
           kubectl apply -f tests/laravel/secret.yaml
           helm upgrade --install -f tests/laravel/values.yaml laravel ./charts/laravel
           kubectl get pods
