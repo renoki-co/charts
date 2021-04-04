@@ -1,6 +1,6 @@
 {{- range .Values.app.workers }}
 {{- if .autoscaling.enabled }}
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ include "laravel.fullname" $ }}-{{ .name }}
@@ -14,22 +14,26 @@ spec:
   minReplicas: {{ .autoscaling.minReplicas }}
   maxReplicas: {{ .autoscaling.maxReplicas }}
   maxReplicas: {{ .autoscaling.maxReplicas }}
-  {{-  with .autoscaling.behavior }}
+  {{- with .autoscaling.behavior }}
   behavior:
-    {{ . toYaml | nindent 4 }}
+    {{ toYaml . | nindent 4 }}
   {{- end }}
   metrics:
     {{- if .autoscaling.targetCPUUtilizationPercentage }}
     - type: Resource
       resource:
         name: cpu
-        targetAverageUtilization: {{ .autoscaling.targetCPUUtilizationPercentage }}
+        target:
+          type: Utilization
+          averageUtilization: {{ .autoscaling.targetCPUUtilizationPercentage }}
     {{- end }}
     {{- if .autoscaling.targetMemoryUtilizationPercentage }}
     - type: Resource
       resource:
         name: memory
-        targetAverageUtilization: {{ .autoscaling.targetMemoryUtilizationPercentage }}
+        target:
+          type: Utilization
+          averageUtilization: {{ .autoscaling.targetMemoryUtilizationPercentage }}
     {{- end }}
     {{- with .autoscaling.customMetrics }}
     {{ toYaml . | nindent 4 }}
