@@ -170,7 +170,7 @@ spec:
               port: php-fpm-metrics
           env:
             - name: PHP_FPM_SCRAPE_URI
-              value: tcp://127.0.0.1:9000/status
+              value: tcp://127.0.0.1:9001/status
             - name: PHP_FPM_WEB_LISTEN_ADDRESS
               value: ":9253"
             - name: PHP_FPM_WEB_TELEMETRY_PATH
