@@ -32,7 +32,7 @@ jobs:
           minikube version: v1.17.0
           kubernetes version: "v${{ matrix.kubernetes }}"
           github token: "${{ secrets.GITHUB_TOKEN }}"
-          start args: '--addons=registry --addons=ingress'
+          start args: '--driver=docker --addons=registry --addons=ingress'
 
       - name: Configure Git
         run: |
