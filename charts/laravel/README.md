@@ -40,7 +40,7 @@ Install Laravel chart:
 ```bash
 $ helm upgrade laravel-app \
     --install \
-    --version=0.6.2 \
+    --version=0.7.0 \
     renoki-co/laravel
 ```
 
@@ -112,9 +112,9 @@ stringData:
 
 ### Run workers (non-HTTP workload)
 
-Workers can be for example long-lived commands, like `php artisan queue:work` commands or `php artisan horizon` that run in separate process than the web workers that serve HTTP content.
+Workers can be for example long-lived commands, like `php artisan queue:work` commands or `php artisan horizon` that run in separate processes, other the web workers that serve HTTP content.
 
-In `values.yaml`, you will find a list where you can define all the workers. Each worker will be in its own Deployment and you can define the command to run on each one, as well as the pod settings.
+To deploy such workload, check the [Worker Chart](https://github.com/renoki-co/charts/tree/master/charts/laravel-worker) that will ease the job for you.
 
 ## Monitoring
 
