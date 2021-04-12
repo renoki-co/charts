@@ -62,7 +62,7 @@ spec:
           command:
             - /bin/sh
             - -c
-            - cp /tmp/.env /var/www/html/.env && cd /var/www/html && sh deploy.sh && {{ .command }}
+            - cp /tmp/.env /var/www/html/.env && cd /var/www/html && sh deploy.sh && chown -R www-data:www-data /var/www/html && {{ .command }}
           volumeMounts:
             - name: env
               mountPath: /tmp/.env
