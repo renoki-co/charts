@@ -23,7 +23,7 @@ $ helm repo update
 To install a specific chart:
 
 ```bash
-$ helm install some-release  renoki-co/<chart>
+$ helm install some-release renoki-co/<chart>
 ```
 
 ## Search for available repos
