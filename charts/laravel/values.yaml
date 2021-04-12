@@ -188,7 +188,7 @@ nginx:
   # returns a 200 OK when accessed. Implementing a healthcheck
   # controller like https://github.com/renoki-co/laravel-healthchecks is desirable.
   healthcheck:
-    enabled: true
+    enabled: false
     period: 5
     path: /health
 
