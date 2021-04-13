@@ -1,0 +1,139 @@
+- [Laravel Octane Helm Chart](#laravel-octane-helm-chart)
+  - [🤝 Supporting](#-supporting)
+  - [🚀 Installation](#-installation)
+    - [Environment variables](#environment-variables)
+    - [Run workers (non-HTTP workload)](#run-workers-non-http-workload)
+  - [Monitoring](#monitoring)
+    - [Healthchecks](#healthchecks)
+  - [🐛 Testing](#-testing)
+  - [🤝 Contributing](#-contributing)
+  - [🔒  Security](#--security)
+  - [🎉 Credits](#-credits)
+
+Laravel Octane Helm Chart
+=========================
+
+Containerize & Orchestrate your Octane-based Laravel application with this simple Helm chart.
+
+## 🤝 Supporting
+
+Renoki Co. on GitHub aims on bringing a lot of open source projects and helpful projects to the world. Developing and maintaining projects everyday is a harsh work and tho, we love it.
+
+If you are using your application in your day-to-day job, on presentation demos, hobby projects or even school projects, spread some kind words about our work or sponsor our work. Kind words will touch our chakras and vibe, while the sponsorships will keep the open source projects alive.
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R42U8CL)
+
+## 🚀 Installation
+
+To create a Laravel project image for Docker, head over to [renoki-co/laravel-helm-demo](https://github.com/renoki-co/laravel-helm-demo) to get started. The dockerfile differs from the usual PHP-FPM-based image, so make sure to read the documentation.
+
+Install Helm chart repository:
+
+```bash
+$ helm repo add renoki-co https://helm.renoki-co.org
+$ helm repo update
+```
+
+Install Laravel chart:
+
+```bash
+$ helm upgrade laravel-octane-app \
+    --install \
+    --version=0.1.0 \
+    renoki-co/laravel-octane
+```
+
+Check `values.yaml` for additional available customizations.
+
+### Environment variables
+
+Laravel needs an `.env` file to keep secrets within, so you will need a secret from which they will be pulled. To do this, simply create a `laravel-octane-app-env` secret with the `.env` key if your helm release is called `laravel-octane-app`.
+
+To replace the name, check for `app.envSecretName` in `values.yaml`. By default, the name is `<release name>-env`.
+
+```yaml
+kind: Secret
+apiVersion: v1
+metadata:
+  name: laravel-app-env
+stringData:
+  .env: |
+    APP_NAME=Laravel
+    APP_ENV=production
+    APP_KEY=base64:kLHmdtqS0YnTACWSpkV4w1GVOQMEXQ68Usk8WR+yauA=
+    APP_DEBUG=true
+    APP_URL=http://test.laravel.com
+
+    LOG_CHANNEL=null
+    LOG_LEVEL=debug
+
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=laravel
+    DB_USERNAME=root
+    DB_PASSWORD=
+
+    BROADCAST_DRIVER=log
+    CACHE_DRIVER=file
+    QUEUE_CONNECTION=sync
+    SESSION_DRIVER=file
+    SESSION_LIFETIME=120
+
+    MEMCACHED_HOST=127.0.0.1
+
+    REDIS_HOST=127.0.0.1
+    REDIS_PASSWORD=null
+    REDIS_PORT=6379
+
+    MAIL_MAILER=smtp
+    MAIL_HOST=mailhog
+    MAIL_PORT=1025
+    MAIL_USERNAME=null
+    MAIL_PASSWORD=null
+    MAIL_ENCRYPTION=null
+    MAIL_FROM_ADDRESS=null
+    MAIL_FROM_NAME="${APP_NAME}"
+
+    AWS_ACCESS_KEY_ID=
+    AWS_SECRET_ACCESS_KEY=
+    AWS_DEFAULT_REGION=us-east-1
+    AWS_BUCKET=
+
+    PUSHER_APP_ID=
+    PUSHER_APP_KEY=
+    PUSHER_APP_SECRET=
+    PUSHER_APP_CLUSTER=mt1
+
+    MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+    MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+```
+
+### Run workers (non-HTTP workload)
+
+Workers can be for example long-lived commands, like `php artisan queue:work` commands or `php artisan horizon` that run in separate processes, other the web workers that serve HTTP content.
+
+To deploy such workload, check the [Worker Chart](https://github.com/renoki-co/charts/tree/master/charts/laravel-worker) that will ease the job for you.
+
+## Monitoring
+
+### Healthchecks
+
+For convenience, you may use [renoki-co/laravel-healthcheck](https://github.com/renoki-co/laravel-healthchecks) to easily set up healthchecks in your app, just like in `app/Http/Controllers/HealthController`.
+
+## 🐛 Testing
+
+Coming soon.
+
+## 🤝 Contributing
+
+Please see [CONTRIBUTING](../../CONTRIBUTING.md) for details.
+
+## 🔒  Security
+
+If you discover any security related issues, please email alex@renoki.org instead of using the issue tracker.
+
+## 🎉 Credits
+
+- [Alex Renoki](https://github.com/rennokki)
+- [All Contributors](../../../../contributors)

@@ -1,0 +1,73 @@
+name: charts/laravel-octane
+
+on:
+  push:
+    paths:
+      - charts/laravel-octane/**
+      - .github/workflows/charts-laravel-octane-ci.yml
+
+jobs:
+  release:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        kubernetes:
+          - '1.18.17'
+          - '1.19.9'
+          - '1.20.5'
+
+    name: Test with Kubernetes v${{ matrix.kubernetes }}
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: manusa/actions-setup-minikube@v2.3.0
+        name: Setup Minikube
+        with:
+          minikube version: v1.17.0
+          kubernetes version: "v${{ matrix.kubernetes }}"
+          github token: "${{ secrets.GITHUB_TOKEN }}"
+          driver: docker
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.4.0
+
+      - name: Enable Helm Ingress
+        run: |
+          minikube addons enable ingress
+
+      - name: Install Chart
+        run: |
+          sleep 30
+          kubectl apply -f tests/laravel/secret.yaml
+          helm upgrade --install -f tests/laravel-octane/values.yaml laravel ./charts/laravel-octane
+          kubectl get pods
+
+      - name: Install NGINX Ingress Controller
+        run: |
+          helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+          helm repo update
+          helm upgrade nginx --version=3.26.0 -f tests/laravel-octane/nginx.yaml --install ingress-nginx/ingress-nginx
+
+      - name: Update hosts
+        run: |
+          MINIKUBE_IP=$(minikube ip)
+          echo "${MINIKUBE_IP} test.laravel.com" | sudo tee -a /etc/hosts
+
+      - name: Connect to Laravel
+        timeout-minutes: 5
+        run: |
+          until curl --silent -XGET --fail http://test.laravel.com; do printf '.'; sleep 1; done
+

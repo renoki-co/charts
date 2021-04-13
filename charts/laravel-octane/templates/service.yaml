@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "laravel-octane.fullname" . }}
+  labels:
+    {{- include "laravel-octane.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "laravel-octane.selectorLabels" . | nindent 4 }}
+    octane.laravel.com/pod-type: web
