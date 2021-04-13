@@ -1,0 +1,9 @@
+{{- if not .Values.phpIni.configName }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-php-ini-config
+data:
+  php.ini: |
+{{- tpl .Values.phpIni.content . | nindent 4 }}
+{{- end }}
