@@ -39,7 +39,7 @@ Install Laravel Octane chart:
 ```bash
 $ helm upgrade laravel-octane-app \
     --install \
-    --version=0.1.2 \
+    --version=0.1.3 \
     renoki-co/laravel-octane
 ```
 
