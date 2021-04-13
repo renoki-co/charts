@@ -202,4 +202,15 @@ entries:
     urls:
     - https://github.com/renoki-co/charts/releases/download/laravel-octane-0.1.1/laravel-octane-0.1.1.tgz
     version: 0.1.1
-generated: "2021-04-13T12:24:25.378345973Z"
+  laravel-worker:
+  - apiVersion: v2
+    appVersion: 8.0.0
+    created: "2021-04-13T15:00:38.983621656Z"
+    description: Helm chart scaffolding for additional Laravel worker applications.
+    digest: 40c2ba5c2c7ffc6eaa6ee6ee66114438111a7c0462e73d34e99c706257b6a69b
+    name: laravel-worker
+    type: application
+    urls:
+    - https://github.com/renoki-co/charts/releases/download/laravel-worker-0.1.0/laravel-worker-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-04-13T15:00:38.983699356Z"
