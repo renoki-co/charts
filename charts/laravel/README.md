@@ -1,11 +1,11 @@
 - [Laravel Helm Chart](#laravel-helm-chart)
   - [🤝 Supporting](#-supporting)
   - [🚀 Installation](#-installation)
-    - [Environment variables](#environment-variables)
-    - [Run workers (non-HTTP workload)](#run-workers-non-http-workload)
-  - [Monitoring](#monitoring)
-    - [Scraping PHP-FPM and NGINX Metrics](#scraping-php-fpm-and-nginx-metrics)
-    - [Healthchecks](#healthchecks)
+    - [📜 Environment variables](#-environment-variables)
+    - [🤖 Run workers (non-HTTP workload)](#-run-workers-non-http-workload)
+  - [📡 Monitoring](#-monitoring)
+    - [🔥 Scraping PHP-FPM and NGINX Metrics](#-scraping-php-fpm-and-nginx-metrics)
+    - [❤ Healthchecks](#-healthchecks)
   - [🐛 Testing](#-testing)
   - [🤝 Contributing](#-contributing)
   - [🔒  Security](#--security)
@@ -26,9 +26,9 @@ If you are using your application in your day-to-day job, on presentation demos,
 
 ## 🚀 Installation
 
-To create a Laravel project image for Docker, head over to [renoki-co/laravel-helm-demo](https://github.com/renoki-co/laravel-helm-demo) to get started.
+To create a Laravel project image for Docker, head over to [renoki-co/laravel-helm-demo](https://github.com/renoki-co/laravel-helm-demo) to get started. The Dockerfile differs based on the project you want to deploy, and there you will find a demo application to run to understand the basics.
 
-Install Helm chart repository:
+Install the Helm chart repository:
 
 ```bash
 $ helm repo add renoki-co https://helm.renoki-co.org
@@ -46,9 +46,9 @@ $ helm upgrade laravel-app \
 
 Check `values.yaml` for additional available customizations.
 
-### Environment variables
+### 📜 Environment variables
 
-Laravel needs an `.env` file to keep secrets within, so you will need a secret from which they will be pulled. To do this, simply create a `laravel-app-env` secret with the `.env` key.
+Laravel needs an `.env` file to keep secrets within, so you will need a secret from which they will be pulled. To do this, simply create a `laravel-app-env` secret with the `.env` key if your helm release is called `laravel-app`.
 
 To replace the name, check for `app.envSecretName` in `values.yaml`. By default, the name is `<release name>-env`.
 
@@ -110,22 +110,22 @@ stringData:
     MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ```
 
-### Run workers (non-HTTP workload)
+### 🤖 Run workers (non-HTTP workload)
 
 Workers can be for example long-lived commands, like `php artisan queue:work` commands or `php artisan horizon` that run in separate processes, other the web workers that serve HTTP content.
 
 To deploy such workload, check the [Worker Chart](https://github.com/renoki-co/charts/tree/master/charts/laravel-worker) that will ease the job for you.
 
-## Monitoring
+## 📡 Monitoring
 
-### Scraping PHP-FPM and NGINX Metrics
+### 🔥 Scraping PHP-FPM and NGINX Metrics
 
 PHP-FPM and NGINX containers within the Laravel app pod can expose metrics for Prometheus to scrape. When enabling the exporters, the following endpoints return Prometheus-readable metrics:
 
 - `localhost:9253/metrics` - PHP-FPM metrics
 - `localhost:9113/metrics` - NGINX metrics
 
-### Healthchecks
+### ❤ Healthchecks
 
 Healthchecks are set up and enabled by default for both `/health` on the NGINX container (the web application that will serve the Laravel app) and the TCP :9000 port on PHP-FPM.
 
