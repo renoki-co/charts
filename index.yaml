@@ -3,6 +3,16 @@ entries:
   laravel:
   - apiVersion: v2
     appVersion: 8.0.0
+    created: "2021-04-13T11:08:50.210005157Z"
+    description: Helm chart scaffolding for Laravel applications.
+    digest: e3fa8d37e7f90a8fbec04eb9d409a26b024ada8fb3b9b253045ad55a8e36d538
+    name: laravel
+    type: application
+    urls:
+    - https://github.com/renoki-co/charts/releases/download/laravel-0.7.1/laravel-0.7.1.tgz
+    version: 0.7.1
+  - apiVersion: v2
+    appVersion: 8.0.0
     created: "2021-04-12T18:57:21.689065957Z"
     description: Helm chart scaffolding for Laravel applications.
     digest: 22a16b7c3890acd4f74f764f1d2015d0aaf4b3dabf8a1f064a3ad09879127eab
@@ -141,4 +151,15 @@ entries:
     urls:
     - https://github.com/renoki-co/charts/releases/download/laravel-0.1.0/laravel-0.1.0.tgz
     version: 0.1.0
-generated: "2021-04-12T18:57:21.689196761Z"
+  laravel-octane:
+  - apiVersion: v2
+    appVersion: 8.0.0
+    created: "2021-04-13T11:08:50.483622091Z"
+    description: Helm chart scaffolding for Octane-based Laravel applications.
+    digest: 6b963e073bd66dea6e251c72b4d1341c7c3b7396f2c211e5c020b8e9d47702aa
+    name: laravel-octane
+    type: application
+    urls:
+    - https://github.com/renoki-co/charts/releases/download/laravel-octane-0.1.1/laravel-octane-0.1.1.tgz
+    version: 0.1.1
+generated: "2021-04-13T11:08:50.483735995Z"
