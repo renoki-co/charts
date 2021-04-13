@@ -1,10 +1,10 @@
 - [Laravel Octane Helm Chart](#laravel-octane-helm-chart)
   - [🤝 Supporting](#-supporting)
   - [🚀 Installation](#-installation)
-    - [Environment variables](#environment-variables)
-    - [Run workers (non-HTTP workload)](#run-workers-non-http-workload)
-  - [Monitoring](#monitoring)
-    - [Healthchecks](#healthchecks)
+    - [📜 Environment variables](#-environment-variables)
+    - [🤖 Run workers (non-HTTP workload)](#-run-workers-non-http-workload)
+  - [📡 Monitoring](#-monitoring)
+    - [❤ Healthchecks](#-healthchecks)
   - [🐛 Testing](#-testing)
   - [🤝 Contributing](#-contributing)
   - [🔒  Security](#--security)
@@ -25,16 +25,16 @@ If you are using your application in your day-to-day job, on presentation demos,
 
 ## 🚀 Installation
 
-To create a Laravel project image for Docker, head over to [renoki-co/laravel-helm-demo](https://github.com/renoki-co/laravel-helm-demo) to get started. The dockerfile differs from the usual PHP-FPM-based image, so make sure to read the documentation.
+To create a Laravel project image for Docker, head over to [renoki-co/laravel-helm-demo](https://github.com/renoki-co/laravel-helm-demo) to get started. The Dockerfile differs based on the project you want to deploy, and there you will find a demo application to run to understand the basics.
 
-Install Helm chart repository:
+To install the Helm chart repository:
 
 ```bash
 $ helm repo add renoki-co https://helm.renoki-co.org
 $ helm repo update
 ```
 
-Install Laravel chart:
+Install Laravel Octane chart:
 
 ```bash
 $ helm upgrade laravel-octane-app \
@@ -45,7 +45,7 @@ $ helm upgrade laravel-octane-app \
 
 Check `values.yaml` for additional available customizations.
 
-### Environment variables
+### 📜 Environment variables
 
 Laravel needs an `.env` file to keep secrets within, so you will need a secret from which they will be pulled. To do this, simply create a `laravel-octane-app-env` secret with the `.env` key if your helm release is called `laravel-octane-app`.
 
@@ -109,17 +109,17 @@ stringData:
     MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ```
 
-### Run workers (non-HTTP workload)
+### 🤖 Run workers (non-HTTP workload)
 
 Workers can be for example long-lived commands, like `php artisan queue:work` commands or `php artisan horizon` that run in separate processes, other the web workers that serve HTTP content.
 
 To deploy such workload, check the [Worker Chart](https://github.com/renoki-co/charts/tree/master/charts/laravel-worker) that will ease the job for you.
 
-## Monitoring
+## 📡 Monitoring
 
-### Healthchecks
+### ❤ Healthchecks
 
-For convenience, you may use [renoki-co/laravel-healthcheck](https://github.com/renoki-co/laravel-healthchecks) to easily set up healthchecks in your app, just like in `app/Http/Controllers/HealthController`.
+For convenience, you may use [renoki-co/laravel-healthcheck](https://github.com/renoki-co/laravel-healthchecks) to easily set up healthchecks in your app, just like in `app/Http/Controllers/HealthController`. In `values.yaml` you will also find a healthcheck configuration on where you can change the settings.
 
 ## 🐛 Testing
 
