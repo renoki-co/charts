@@ -36,7 +36,7 @@ Install Laravel Worker chart:
 ```bash
 $ helm upgrade laravel-horizon \
     --install \
-    --version=0.1.0 \
+    --version=0.1.1 \
     renoki-co/laravel-worker
 ```
 
@@ -52,7 +52,7 @@ To replace the name, check for `app.envSecretName` in `values.yaml`. By default,
 kind: Secret
 apiVersion: v1
 metadata:
-  name: laravel-app-env
+  name: laravel-horizon-env
 stringData:
   .env: |
     APP_NAME=Laravel

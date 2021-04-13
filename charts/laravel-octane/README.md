@@ -39,7 +39,7 @@ Install Laravel Octane chart:
 ```bash
 $ helm upgrade laravel-octane-app \
     --install \
-    --version=0.1.3 \
+    --version=0.1.4 \
     renoki-co/laravel-octane
 ```
 
@@ -55,7 +55,7 @@ To replace the name, check for `app.envSecretName` in `values.yaml`. By default,
 kind: Secret
 apiVersion: v1
 metadata:
-  name: laravel-app-env
+  name: laravel-octane-app-env
 stringData:
   .env: |
     APP_NAME=Laravel
