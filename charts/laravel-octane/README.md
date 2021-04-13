@@ -119,7 +119,9 @@ To deploy such workload, check the [Worker Chart](https://github.com/renoki-co/c
 
 ### ❤ Healthchecks
 
-For convenience, you may use [renoki-co/laravel-healthcheck](https://github.com/renoki-co/laravel-healthchecks) to easily set up healthchecks in your app, just like in `app/Http/Controllers/HealthController`. In `values.yaml` you will also find a healthcheck configuration on where you can change the settings.
+For convenience, you may use [renoki-co/laravel-healthcheck](https://github.com/renoki-co/laravel-healthchecks) to easily set up healthchecks in your app, just like in `app/Http/Controllers/HealthController` presented in [renoki-co/laravel-helm-demo](https://github.com/renoki-co/laravel-helm-demo), a demo application.
+
+In `values.yaml` you will also find a healthcheck configuration on where you can change the settings.
 
 ## 🐛 Testing
 
