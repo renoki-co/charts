@@ -78,13 +78,13 @@ spec:
             httpGet:
               path: {{ .Values.app.healthcheck.path }}
               port: http
-            initialDelaySeconds: 10
+            initialDelaySeconds: {{ .Values.app.healthcheck.period }}
             periodSeconds: {{ .Values.app.healthcheck.period }}
           livenessProbe:
             httpGet:
               path: {{ .Values.app.healthcheck.path }}
               port: http
-            initialDelaySeconds: 10
+            initialDelaySeconds: {{ .Values.app.healthcheck.period }}
             periodSeconds: {{ .Values.app.healthcheck.period }}
           {{- end }}
           resources:
