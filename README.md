@@ -16,7 +16,7 @@ If you are using your application in your day-to-day job, on presentation demos,
 To install the charts repository:
 
 ```bash
-$ helm repo add renoki-co https://helm.renoki-co.org
+$ helm repo add renoki-co https://helm.renoki.org
 $ helm repo update
 ```
 
