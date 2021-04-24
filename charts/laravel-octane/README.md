@@ -30,7 +30,7 @@ To create a Laravel project image for Docker, head over to [renoki-co/laravel-he
 To install the Helm chart repository:
 
 ```bash
-$ helm repo add renoki-co https://helm.renoki-co.org
+$ helm repo add renoki-co https://helm.renoki.org
 $ helm repo update
 ```
 
