@@ -5,6 +5,10 @@ metadata:
   name: {{ include "laravel-worker.fullname" . }}
   labels:
     {{- include "laravel-worker.labels" . | nindent 4 }}
+  annotations:
+    {{- with .Values.service.annotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
 spec:
   type: {{ .Values.service.type }}
   ports:

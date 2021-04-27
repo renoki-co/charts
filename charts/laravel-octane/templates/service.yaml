@@ -4,6 +4,10 @@ metadata:
   name: {{ include "laravel-octane.fullname" . }}
   labels:
     {{- include "laravel-octane.labels" . | nindent 4 }}
+  annotations:
+    {{- with .Values.service.annotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
 spec:
   type: {{ .Values.service.type }}
   ports:
