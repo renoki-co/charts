@@ -78,7 +78,7 @@ spec:
               mountPath: /usr/local/etc/php-fpm.d/laravel.conf
               subPath: laravel.conf
             {{- with .Values.app.extraVolumeMounts }}
-            {{ toYaml . | nindent 12 }}
+            {{- toYaml . | nindent 12 }}
             {{- end }}
           ports:
             - name: php-fpm
@@ -121,7 +121,7 @@ spec:
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
             {{- with .Values.nginx.extraVolumeMounts }}
-            {{ toYaml . | nindent 12 }}
+            {{- toYaml . | nindent 12 }}
             {{- end }}
           ports:
             - name: http
