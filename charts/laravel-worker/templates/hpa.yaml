@@ -15,7 +15,7 @@ spec:
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   {{- with .Values.autoscaling.behavior }}
   behavior:
-    {{ toYaml . | nindent 4 }}
+    {{- toYaml . | nindent 4 }}
   {{- end }}
   metrics:
     {{- if .Values.autoscaling.targetCPUUtilizationPercentage }}
@@ -35,6 +35,6 @@ spec:
           averageUtilization: {{ .Values.autoscaling.targetMemoryUtilizationPercentage }}
     {{- end }}
     {{- with .Values.autoscaling.customMetrics }}
-    {{ toYaml . | nindent 4 }}
+    {{- toYaml . | nindent 4 }}
     {{- end }}
 {{- end }}
