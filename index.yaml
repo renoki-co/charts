@@ -3,6 +3,16 @@ entries:
   laravel:
   - apiVersion: v2
     appVersion: 8.0.0
+    created: "2021-04-27T17:25:44.103342333Z"
+    description: Helm chart scaffolding for Laravel applications.
+    digest: 1300fac2f986100f59dcd8c3792ee43d8061fded6b0de9e31c12579f3732be93
+    name: laravel
+    type: application
+    urls:
+    - https://github.com/renoki-co/charts/releases/download/laravel-0.8.0/laravel-0.8.0.tgz
+    version: 0.8.0
+  - apiVersion: v2
+    appVersion: 8.0.0
     created: "2021-04-13T12:24:25.271459769Z"
     description: Helm chart scaffolding for Laravel applications.
     digest: 325743bbb7122bd1a84746388db075596bb7a05fbb07f40b8f20e1bef45d148d
@@ -174,6 +184,16 @@ entries:
   laravel-octane:
   - apiVersion: v2
     appVersion: 8.0.0
+    created: "2021-04-27T17:25:44.374179976Z"
+    description: Helm chart scaffolding for Octane-based Laravel applications.
+    digest: 1e6383987df1e6ab4c42440880b7bfb792d5be284398adb9ade53e305f4feffb
+    name: laravel-octane
+    type: application
+    urls:
+    - https://github.com/renoki-co/charts/releases/download/laravel-octane-0.2.0/laravel-octane-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 8.0.0
     created: "2021-04-13T15:03:55.211336179Z"
     description: Helm chart scaffolding for Octane-based Laravel applications.
     digest: 6e1f7ca6efbb23aefd5aa10bcf70cd6e197e714d981142badcf9712cf4598544
@@ -215,6 +235,16 @@ entries:
   laravel-worker:
   - apiVersion: v2
     appVersion: 8.0.0
+    created: "2021-04-27T17:25:44.666313145Z"
+    description: Helm chart scaffolding for additional Laravel worker applications.
+    digest: 1a66c4977036af5405a0a3cd324c42d1cb108f2541c1bf8a87e12856529f14cf
+    name: laravel-worker
+    type: application
+    urls:
+    - https://github.com/renoki-co/charts/releases/download/laravel-worker-0.2.0/laravel-worker-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 8.0.0
     created: "2021-04-13T15:03:55.470547208Z"
     description: Helm chart scaffolding for additional Laravel worker applications.
     digest: 868d44f298ed279a29cdee0aac6727e6c3a9565094836bd968e73b148fa3cd97
@@ -233,4 +263,4 @@ entries:
     urls:
     - https://github.com/renoki-co/charts/releases/download/laravel-worker-0.1.0/laravel-worker-0.1.0.tgz
     version: 0.1.0
-generated: "2021-04-13T15:03:55.470651008Z"
+generated: "2021-04-27T17:25:44.66669807Z"
