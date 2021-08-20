@@ -11,9 +11,9 @@ imagePullSecrets: []
 # Configure Octane-based Laravel container.
 app:
   image:
-    repository: renokico/laravel-helm-demo
+    repository: quay.io/renokico/laravel-helm-demo
     pullPolicy: IfNotPresent
-    tag: "octane-0.5.1"
+    tag: "octane-0.6.0"
 
   command:
     - php
