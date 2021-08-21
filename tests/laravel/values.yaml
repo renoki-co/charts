@@ -13,7 +13,7 @@ app:
   image:
     repository: quay.io/renokico/laravel-helm-demo
     pullPolicy: IfNotPresent
-    tag: "0.5.0"
+    tag: "0.6.0"
 
   # Specify the Secret name to pull the .env file from.
   # If not specified, it defaults to "{release name}-env". It should
