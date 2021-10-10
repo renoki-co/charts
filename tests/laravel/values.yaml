@@ -281,6 +281,36 @@ extraContainers: []
 # Extra init containers to run in the deployment.
 extraInitContainers: []
 
+# Configure the Task Scheduler.
+scheduler:
+  # When enabling it, the chart will deploy a sidecar container in the same pod that
+  # will run the "schedule:run" command each minute.
+  enabled: true
+
+  command:
+    - php
+    - artisan
+    - schedule:work
+
+  resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+  # Configure the PHP healthcheck for the process.
+  # If enabled, Kubernetes will periodically check the container
+  # to see if it's still responsive.
+  healthcheck:
+    enabled: true
+    period: 5
+
 phpFpmConf:
   # Specify the Config name to pull the laravel.conf configuration from.
   # If not specified, it defaults to "{release name}-php-fpm-config".
