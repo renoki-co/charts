@@ -33,6 +33,7 @@ jobs:
           kubernetes version: "v${{ matrix.kubernetes }}"
           github token: "${{ secrets.GITHUB_TOKEN }}"
           driver: docker
+          start args: "--addons=registry --addons=ingress"
 
       - name: Configure Git
         run: |
