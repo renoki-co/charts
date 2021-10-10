@@ -109,6 +109,56 @@ spec:
                   - /bin/sh
                   - -c
                   - cp -r /var/www/html/. /app && cp /tmp/.env /var/www/html/.env && cd /var/www/html && sh deploy.sh
+        {{- if .Values.scheduler.enabled }}
+        - name: scheduler
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.app.image.repository }}:{{ .Values.app.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.app.image.pullPolicy }}
+          command:
+            {{- toYaml .Values.scheduler.command | nindent 12 }}
+          volumeMounts:
+            - name: app
+              mountPath: /app
+            - name: env
+              mountPath: /tmp/.env
+              subPath: .env
+            - name: php-ini-config
+              mountPath: /usr/local/etc/php/php.ini
+              subPath: php.ini
+            {{- with .Values.app.extraVolumeMounts }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+          {{- if .Values.scheduler.healthcheck.enabled }}
+          readinessProbe:
+            exec:
+              command:
+                - php
+                - -v
+            initialDelaySeconds: {{ .Values.scheduler.healthcheck.period }}
+            periodSeconds: {{ .Values.scheduler.healthcheck.period }}
+          livenessProbe:
+            exec:
+              command:
+                - php
+                - -v
+            initialDelaySeconds: {{ .Values.scheduler.healthcheck.period }}
+            periodSeconds: {{ .Values.scheduler.healthcheck.period }}
+          {{- end }}
+          resources:
+            {{- toYaml .Values.scheduler.resources | nindent 12 }}
+          {{- with .Values.app.extraEnv }}
+          env:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - cp -r /var/www/html/. /app && cp /tmp/.env /var/www/html/.env && cd /var/www/html && sh deploy.sh
+        {{- end }}
         - name: nginx
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
