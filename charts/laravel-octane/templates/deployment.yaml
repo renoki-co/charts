@@ -23,6 +23,8 @@ spec:
         octane.laravel.com/pod-type: web
     spec:
       volumes:
+        - name: app
+          emptyDir: {}
         - name: env
           secret:
             secretName: {{ if .Values.app.envSecretName }} {{ .Values.app.envSecretName }} {{ else }} {{ .Release.Name }}-env {{ end }}
