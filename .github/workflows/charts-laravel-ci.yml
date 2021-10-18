@@ -45,10 +45,6 @@ jobs:
         with:
           version: v3.4.0
 
-      - name: Enable Helm Ingress
-        run: |
-          minikube addons enable ingress
-
       - name: Install Chart
         run: |
           sleep 30
