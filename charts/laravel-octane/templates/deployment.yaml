@@ -23,8 +23,6 @@ spec:
         octane.laravel.com/pod-type: web
     spec:
       volumes:
-        - name: app
-          emptyDir: {}
         - name: env
           secret:
             secretName: {{ if .Values.app.envSecretName }} {{ .Values.app.envSecretName }} {{ else }} {{ .Release.Name }}-env {{ end }}
@@ -111,8 +109,6 @@ spec:
           command:
             {{- toYaml .Values.scheduler.command | nindent 12 }}
           volumeMounts:
-            - name: app
-              mountPath: /app
             - name: env
               mountPath: /tmp/.env
               subPath: .env
@@ -150,7 +146,8 @@ spec:
                 command:
                   - /bin/sh
                   - -c
-                  - cp -r /var/www/html/. /app && cp /tmp/.env /var/www/html/.env && cd /var/www/html && sh deploy.sh
+                  - cp /tmp/.env /var/www/html/.env && cd /var/www/html && sh deploy.sh
+
         {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
