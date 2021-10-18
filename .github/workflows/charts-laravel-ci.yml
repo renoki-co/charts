@@ -33,7 +33,6 @@ jobs:
           kubernetes version: "v${{ matrix.kubernetes }}"
           github token: "${{ secrets.GITHUB_TOKEN }}"
           driver: docker
-          start args: "--addons=registry --addons=ingress"
 
       - name: Configure Git
         run: |
@@ -44,6 +43,10 @@ jobs:
         uses: azure/setup-helm@v1.1
         with:
           version: v3.4.0
+
+      - name: Enable Helm Ingress
+        run: |
+          minikube addons enable ingress
 
       - name: Install Chart
         run: |
