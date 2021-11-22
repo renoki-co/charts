@@ -1,5 +1,4 @@
 - [Laravel Octane Helm Chart](#laravel-octane-helm-chart)
-  - [🤝 Supporting](#-supporting)
   - [🚀 Installation](#-installation)
     - [📜 Environment variables](#-environment-variables)
     - [🤖 Run workers (non-HTTP workload)](#-run-workers-non-http-workload)
@@ -31,7 +30,7 @@ Install Laravel Octane chart:
 ```bash
 $ helm upgrade laravel-octane-app \
     --install \
-    --version=0.3.0 \
+    --version=0.3.1 \
     renoki-co/laravel-octane
 ```
 

@@ -1,5 +1,4 @@
 - [Laravel Worker Helm Chart](#laravel-worker-helm-chart)
-  - [🤝 Supporting](#-supporting)
   - [🚀 Installation](#-installation)
     - [📜 Environment variables](#-environment-variables)
   - [🐛 Testing](#-testing)
@@ -28,7 +27,7 @@ Install Laravel Worker chart:
 ```bash
 $ helm upgrade laravel-horizon \
     --install \
-    --version=0.3.0 \
+    --version=0.3.1 \
     renoki-co/laravel-worker
 ```
 

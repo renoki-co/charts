@@ -1,5 +1,4 @@
 - [Laravel Helm Chart](#laravel-helm-chart)
-  - [🤝 Supporting](#-supporting)
   - [🚀 Installation](#-installation)
     - [📜 Environment variables](#-environment-variables)
     - [🤖 Run workers (non-HTTP workload)](#-run-workers-non-http-workload)
@@ -32,7 +31,7 @@ Install Laravel chart:
 ```bash
 $ helm upgrade laravel-app \
     --install \
-    --version=0.9.0 \
+    --version=0.9.1 \
     renoki-co/laravel
 ```
 
