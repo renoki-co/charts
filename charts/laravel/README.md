@@ -31,7 +31,7 @@ Install Laravel chart:
 ```bash
 $ helm upgrade laravel-app \
     --install \
-    --version=0.9.1 \
+    --version=0.9.2 \
     renoki-co/laravel
 ```
 

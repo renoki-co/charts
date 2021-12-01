@@ -28,7 +28,7 @@ spec:
     {{- end }}
   {{- end }}
   {{- if .Values.ingress.class }}
-  ingressClassName: nginx
+  ingressClassName: {{ .Values.ingress.class }}
   {{- end }}
   rules:
     {{- range .Values.ingress.hosts }}
