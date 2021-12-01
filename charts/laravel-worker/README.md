@@ -1,5 +1,4 @@
 - [Laravel Worker Helm Chart](#laravel-worker-helm-chart)
-  - [🤝 Supporting](#-supporting)
   - [🚀 Installation](#-installation)
     - [📜 Environment variables](#-environment-variables)
   - [🐛 Testing](#-testing)
@@ -11,14 +10,6 @@ Laravel Worker Helm Chart
 =========================
 
 Containerize & Orchestrate your Laravel worker application with this simple Helm chart.
-
-## 🤝 Supporting
-
-If you are using one or more Renoki Co. open-source packages in your production apps, in presentation demos, hobby projects, school projects or so, spread some kind words about our work or sponsor our work via Patreon. 📦
-
-You will sometimes get exclusive content on tips about Laravel, AWS or Kubernetes on Patreon and some early-access to projects or packages.
-
-[<img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" height="41" width="175" />](https://www.patreon.com/bePatron?u=10965171)
 
 ## 🚀 Installation
 
@@ -36,7 +27,7 @@ Install Laravel Worker chart:
 ```bash
 $ helm upgrade laravel-horizon \
     --install \
-    --version=0.3.0 \
+    --version=0.3.1 \
     renoki-co/laravel-worker
 ```
 

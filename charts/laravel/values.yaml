@@ -230,6 +230,7 @@ ingress:
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
+  # class: ""
   hosts:
     - host: test.laravel.com
       paths:
