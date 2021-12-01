@@ -1,5 +1,5 @@
 - [Laravel Helm Chart](#laravel-helm-chart)
-  - [� Requirements](#-requirements)
+  - [🛑 Requirements](#-requirements)
   - [🚀 Installation](#-installation)
     - [📜 Environment variables](#-environment-variables)
     - [🤖 Run workers (non-HTTP workload)](#-run-workers-non-http-workload)
