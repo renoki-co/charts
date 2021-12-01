@@ -1,4 +1,5 @@
 - [Laravel Octane Helm Chart](#laravel-octane-helm-chart)
+  - [🛑 Requirements](#-requirements)
   - [🚀 Installation](#-installation)
     - [📜 Environment variables](#-environment-variables)
     - [🤖 Run workers (non-HTTP workload)](#-run-workers-non-http-workload)
@@ -13,6 +14,10 @@ Laravel Octane Helm Chart
 =========================
 
 Containerize & Orchestrate your Octane-based Laravel application with this simple Helm chart.
+
+## 🛑 Requirements
+
+- Kubernetes v1.19+
 
 ## 🚀 Installation
 

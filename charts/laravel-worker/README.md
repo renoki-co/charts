@@ -1,4 +1,5 @@
 - [Laravel Worker Helm Chart](#laravel-worker-helm-chart)
+  - [🛑 Requirements](#-requirements)
   - [🚀 Installation](#-installation)
     - [📜 Environment variables](#-environment-variables)
   - [🐛 Testing](#-testing)
@@ -10,6 +11,10 @@ Laravel Worker Helm Chart
 =========================
 
 Containerize & Orchestrate your Laravel worker application with this simple Helm chart.
+
+## 🛑 Requirements
+
+- Kubernetes v1.19+
 
 ## 🚀 Installation
 
