@@ -32,7 +32,7 @@ Install Laravel Worker chart:
 ```bash
 $ helm upgrade laravel-horizon \
     --install \
-    --version=0.4.0 \
+    --version=0.5.0 \
     renoki-co/laravel-worker
 ```
 
