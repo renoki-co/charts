@@ -5,7 +5,6 @@ metadata:
   name: {{ include "laravel-octane.fullname" . }}
   labels:
     {{- include "laravel-octane.labels" . | nindent 4 }}
-  {{- end }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
