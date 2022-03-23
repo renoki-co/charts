@@ -17,7 +17,7 @@ Containerize & Orchestrate your Octane-based Laravel application with this simpl
 
 ## 🛑 Requirements
 
-- Kubernetes v1.19+
+- Kubernetes v1.22+
 
 ## 🚀 Installation
 
@@ -35,7 +35,7 @@ Install Laravel Octane chart:
 ```bash
 $ helm upgrade laravel-octane-app \
     --install \
-    --version=0.6.1 \
+    --version=1.0.0 \
     renoki-co/laravel-octane
 ```
 

@@ -14,7 +14,7 @@ Containerize & Orchestrate your Laravel worker application with this simple Helm
 
 ## 🛑 Requirements
 
-- Kubernetes v1.19+
+- Kubernetes v1.22+
 
 ## 🚀 Installation
 
@@ -32,7 +32,7 @@ Install Laravel Worker chart:
 ```bash
 $ helm upgrade laravel-horizon \
     --install \
-    --version=0.6.0 \
+    --version=1.0.0 \
     renoki-co/laravel-worker
 ```
 
