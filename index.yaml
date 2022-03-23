@@ -3,6 +3,16 @@ entries:
   laravel:
   - apiVersion: v2
     appVersion: 8.0.0
+    created: "2022-03-23T21:10:09.48323033Z"
+    description: Helm chart scaffolding for Laravel applications.
+    digest: 90de8167d7049c79a024c19d836fb05c7ae1b464c659dfbfefcdd4e51c11e4e7
+    name: laravel
+    type: application
+    urls:
+    - https://github.com/renoki-co/charts/releases/download/laravel-0.12.0/laravel-0.12.0.tgz
+    version: 0.12.0
+  - apiVersion: v2
+    appVersion: 8.0.0
     created: "2022-01-26T20:49:43.445832173Z"
     description: Helm chart scaffolding for Laravel applications.
     digest: e44b06aa8ddec4c7128515f961db992d007fc75886a24ec04ae167151b0565b3
@@ -355,6 +365,16 @@ entries:
   laravel-worker:
   - apiVersion: v2
     appVersion: 8.0.0
+    created: "2022-03-23T21:10:09.643994698Z"
+    description: Helm chart scaffolding for additional Laravel worker applications.
+    digest: c2f5291efe414e21e188bd123001ba46c92fe0dae47b32104bf5737db6111dd0
+    name: laravel-worker
+    type: application
+    urls:
+    - https://github.com/renoki-co/charts/releases/download/laravel-worker-0.6.0/laravel-worker-0.6.0.tgz
+    version: 0.6.0
+  - apiVersion: v2
+    appVersion: 8.0.0
     created: "2022-01-26T20:49:43.70555952Z"
     description: Helm chart scaffolding for additional Laravel worker applications.
     digest: f333bd01217b0b726734da55debe8b00a2fb2fb63f3e5cc96f98336b13ebf935
@@ -443,4 +463,4 @@ entries:
     urls:
     - https://github.com/renoki-co/charts/releases/download/laravel-worker-0.1.0/laravel-worker-0.1.0.tgz
     version: 0.1.0
-generated: "2022-03-23T19:52:08.446700866Z"
+generated: "2022-03-23T21:10:09.644479499Z"
