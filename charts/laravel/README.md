@@ -18,7 +18,7 @@ Containerize & Orchestrate your Laravel application with this simple Helm chart.
 
 ## 🛑 Requirements
 
-- Kubernetes v1.19+
+- Kubernetes v1.22+
 
 ## 🚀 Installation
 
@@ -36,7 +36,7 @@ Install Laravel chart:
 ```bash
 $ helm upgrade laravel-app \
     --install \
-    --version=0.12.0 \
+    --version=1.0.0 \
     renoki-co/laravel
 ```
 
