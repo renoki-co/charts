@@ -22,7 +22,7 @@ jobs:
     name: Test with Kubernetes v${{ matrix.kubernetes }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
