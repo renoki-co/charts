@@ -22,7 +22,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
 
       - name: Install Helm
-        uses: azure/setup-helm@v1.1
+        uses: azure/setup-helm@v3.1
         with:
           version: v3.4.0
 
