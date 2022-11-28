@@ -18,5 +18,5 @@ spec:
       name: http
   selector:
     {{- include "laravel-worker.selectorLabels" . | nindent 4 }}
-    laravel.com/pod-type: web
+    laravel.com/pod-type: worker
 {{- end }}
